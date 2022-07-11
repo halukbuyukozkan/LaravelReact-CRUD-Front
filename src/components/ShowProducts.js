@@ -5,19 +5,19 @@ import { Link } from 'react-router-dom'
 const endpoint = 'http://localhost:8000/api'
 
 const ShowProducts = () => {
-
     const [products, setProducts] = useState([])
+
     useEffect(() => {
         getAllProducts()
     }, [])
 
     const getAllProducts = async () => {
-        const response = await axios.get('${endpoint}/products')
-        setProducts(response)
+        const response = await axios.get(`${endpoint}/products`)
+        setProducts(response.data)
     }
 
     const deleteProduct = async (id) => {
-        await axios.delete('${endpoint}/product/${id}')
+        await axios.delete(`${endpoint}/product/${id}`)
         getAllProducts()
     }
 
@@ -42,7 +42,7 @@ const ShowProducts = () => {
                             <td>{product.price}</td>
                             <td>{product.stock}</td>
                             <td>
-                                <link to={'/edit/${product.id}'} className='btn btn-primary'>Edit</link>
+                                <Link to={`/edit/${product.id}`} className='btn btn-primary'>Edit</Link>
                                 <button onClick={() => deleteProduct(product.id)} className='btn btn-danger'>Delete</button>
                             </td>
                         </tr>
