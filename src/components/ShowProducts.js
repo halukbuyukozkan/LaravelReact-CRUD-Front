@@ -14,6 +14,7 @@ const ShowProducts = () => {
     const getAllProducts = async () => {
         const response = await axios.get(`${endpoint}/products`)
         setProducts(response.data)
+        console.log(response.data)
     }
 
     const deleteProduct = async (id) => {
