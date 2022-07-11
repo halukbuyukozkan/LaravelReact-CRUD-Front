@@ -24,8 +24,31 @@ const ShowProducts = () => {
     return (
         <div>
             <div className='d-grid gap-2'>
-
+                <Link to="/create" className='btn btn-success btn-lg mt-2 mb-2 text-white'>Create</Link>
             </div>
+            <table className='table table-stripped'>
+                <thead className='bg-primary text-white'>
+                    <tr>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {products.map((product) => (
+                        <tr key={product.id}>
+                            <td>{product.description}</td>
+                            <td>{product.price}</td>
+                            <td>{product.stock}</td>
+                            <td>
+                                <link to={'/edit/${product.id}'} className='btn btn-primary'>Edit</link>
+                                <button onClick={() => deleteProduct(product.id)} className='btn btn-danger'>Delete</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 }
