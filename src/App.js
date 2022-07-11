@@ -1,16 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // İmport components
 import ShowProducts from './components/ShowProducts';
+import CreateProducts from './components/CreateProduct';
+import EditProducts from './components/EditProduct';
+
 
 function App() {
   return (
     <div className="App">
-      <button className='btn btn-primary'>Create Product</button>
-    </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<ShowProducts />} />
+          <Route path='/create' element={<CreateProducts />} />
+          <Route path='/edit/:id' element={<EditProducts />} />
+        </Routes>
+      </BrowserRouter >
+    </div >
   );
 }
 
